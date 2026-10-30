@@ -46,3 +46,7 @@ El práctico y diagrama anteriores corresponden a la entrega inicial; las tablas
 [Guía de uso de la versión 1.5](GUIA_OPERACION_ITSC_V15.md) · [168 comprobaciones locales correctas](PRUEBAS_FUNCIONALES_ITSC_V15.txt).
 
 La actualización está incluida en el ZIP y el SQL completo. Se conservaron los cuatro grupos de ejemplo y los 1.000 estudiantes. Los estudiantes se asignan mediante selección explícita, no automáticamente. El práctico y UML iniciales se complementan con esta guía.
+
+## Informe actualizado
+
+[Informe formal versión 1.5 con carátula, capturas, pruebas y modelo de grupos](Informe_ITSC_V15_Vicente_Apaza_Bautista.docx). Documento de 12 páginas, preparado el 30 de octubre de 2026. También se incluye en la carpeta docs del proyecto completo.
