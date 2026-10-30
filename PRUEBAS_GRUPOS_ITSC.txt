@@ -1,0 +1,62 @@
+OK: Inicio de sesión conservado
+OK: Pantalla inicio
+OK: Pantalla estudiantes
+OK: Pantalla docentes
+OK: Pantalla catalogo
+OK: Pantalla periodos
+OK: Pantalla grupos
+OK: Pantalla integrantes
+OK: Pantalla grupo_materias
+OK: Pantalla ofertas
+OK: Pantalla matriculas
+OK: Pantalla inscripciones
+OK: Pantalla evaluaciones
+OK: Pantalla notas
+OK: Pantalla sesiones
+OK: Pantalla asistencias
+OK: Pantalla excepciones
+OK: Pantalla cierres
+OK: Pantalla recuperaciones
+OK: Pantalla boletin
+OK: Pantalla cargos
+OK: Pantalla pagos
+OK: Pantalla saldos
+OK: Pantalla documentos
+OK: Pantalla tramites
+OK: Pantalla pasantias
+OK: Pantalla usuarios
+OK: Pantalla auditoria
+OK: Pantalla cuenta
+OK: Paginación con total real
+OK: Última página disponible
+OK: Búsqueda global de estudiante
+OK: Porcentaje tratado como texto
+OK: CSRF de grupos obligatorio
+OK: Guardar grupos
+OK: Grupo duplicado rechazado
+OK: Guardar integrantes
+OK: Integrante duplicado rechazado
+OK: Carrera incompatible rechazada
+OK: Gestión incompatible rechazada
+OK: Cupo de grupo obligatorio
+OK: Identidad de grupo protegida con integrantes
+OK: Retirar integrante sin inscripciones
+OK: Guardar integrantes
+OK: Guardar ofertas
+OK: Guardar grupo_materias
+OK: Desvincular oferta sin inscripciones
+OK: Guardar grupo_materias
+OK: Inscripción de estudiante ajeno al grupo rechazada
+OK: Guardar inscripciones
+OK: No desvincula oferta con inscripciones
+OK: No retira integrante con materias activas
+OK: Guardar grupos
+OK: Grupo cerrado no admite integrantes
+OK: Guardar grupos
+OK: Filtro por grupo muestra integrantes
+OK: Filtro de otra gestión excluye grupo
+OK: Guardar grupos
+OK: Grupos separados por gestión
+OK: Guardar usuarios
+OK: Rol docente no administra grupos
+OK: POST docente sin permisos rechazado

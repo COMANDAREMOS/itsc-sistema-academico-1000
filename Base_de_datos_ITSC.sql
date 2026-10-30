@@ -40,7 +40,7 @@ CREATE TABLE `app_auditoria` (
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`),
   CONSTRAINT `app_auditoria_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `app_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `app_usuarios` (
   KEY `docente_id` (`docente_id`),
   CONSTRAINT `app_usuarios_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`rol` <> 'DOCENTE' or `docente_id` is not null)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -540,6 +540,101 @@ LOCK TABLES `excepciones_asistencia` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `grupo_integrantes`
+--
+
+DROP TABLE IF EXISTS `grupo_integrantes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `grupo_integrantes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `grupo_id` int(10) unsigned NOT NULL,
+  `matricula_id` int(10) unsigned NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `matricula_id` (`matricula_id`),
+  KEY `grupo_id` (`grupo_id`),
+  CONSTRAINT `grupo_integrantes_ibfk_1` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`),
+  CONSTRAINT `grupo_integrantes_ibfk_2` FOREIGN KEY (`matricula_id`) REFERENCES `matriculas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grupo_integrantes`
+--
+
+LOCK TABLES `grupo_integrantes` WRITE;
+/*!40000 ALTER TABLE `grupo_integrantes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grupo_integrantes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `grupo_materias`
+--
+
+DROP TABLE IF EXISTS `grupo_materias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `grupo_materias` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `grupo_id` int(10) unsigned NOT NULL,
+  `oferta_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `oferta_id` (`oferta_id`),
+  KEY `grupo_id` (`grupo_id`),
+  CONSTRAINT `grupo_materias_ibfk_1` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`),
+  CONSTRAINT `grupo_materias_ibfk_2` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grupo_materias`
+--
+
+LOCK TABLES `grupo_materias` WRITE;
+/*!40000 ALTER TABLE `grupo_materias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grupo_materias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `grupos`
+--
+
+DROP TABLE IF EXISTS `grupos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `grupos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `periodo_id` int(10) unsigned NOT NULL,
+  `carrera_id` int(10) unsigned NOT NULL,
+  `curso` tinyint(3) unsigned NOT NULL,
+  `paralelo` varchar(20) NOT NULL,
+  `turno` enum('MAÑANA','TARDE','NOCHE') NOT NULL,
+  `cupo` smallint(5) unsigned NOT NULL,
+  `tutor_id` int(10) unsigned DEFAULT NULL,
+  `estado` enum('ACTIVO','CERRADO') NOT NULL DEFAULT 'ACTIVO',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_grupo` (`periodo_id`,`carrera_id`,`curso`,`paralelo`,`turno`),
+  KEY `carrera_id` (`carrera_id`),
+  KEY `tutor_id` (`tutor_id`),
+  CONSTRAINT `grupos_ibfk_1` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`id`),
+  CONSTRAINT `grupos_ibfk_2` FOREIGN KEY (`carrera_id`) REFERENCES `carreras` (`id`),
+  CONSTRAINT `grupos_ibfk_3` FOREIGN KEY (`tutor_id`) REFERENCES `docentes` (`id`),
+  CONSTRAINT `CONSTRAINT_1` CHECK (`curso` between 1 and 6),
+  CONSTRAINT `CONSTRAINT_2` CHECK (`cupo` between 1 and 1000)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grupos`
+--
+
+LOCK TABLES `grupos` WRITE;
+/*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `horarios`
 --
 
@@ -595,7 +690,7 @@ CREATE TABLE `inscripciones` (
   KEY `oferta_id` (`oferta_id`,`carrera_id`,`periodo_id`),
   CONSTRAINT `inscripciones_ibfk_1` FOREIGN KEY (`matricula_id`, `carrera_id`, `periodo_id`) REFERENCES `matriculas` (`id`, `carrera_id`, `periodo_id`),
   CONSTRAINT `inscripciones_ibfk_2` FOREIGN KEY (`oferta_id`, `carrera_id`, `periodo_id`) REFERENCES `ofertas` (`id`, `carrera_id`, `periodo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -665,7 +760,7 @@ CREATE TABLE `matriculas` (
   CONSTRAINT `matriculas_ibfk_2` FOREIGN KEY (`carrera_id`) REFERENCES `carreras` (`id`),
   CONSTRAINT `matriculas_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`id`),
   CONSTRAINT `matriculas_ibfk_4` FOREIGN KEY (`plan_id`, `carrera_id`) REFERENCES `planes_estudio` (`id`, `carrera_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -674,7 +769,7 @@ CREATE TABLE `matriculas` (
 
 LOCK TABLES `matriculas` WRITE;
 /*!40000 ALTER TABLE `matriculas` DISABLE KEYS */;
-INSERT INTO `matriculas` VALUES (1,1,1,1,'2026-07-15','ACTIVA',8),(2,2,2,1,'2026-07-15','ACTIVA',2),(3,3,3,1,'2026-07-16','ACTIVA',3),(5,5,1,1,'2026-10-16','ACTIVA',8);
+INSERT INTO `matriculas` VALUES (1,1,1,1,'2026-07-15','ACTIVA',8),(2,2,2,1,'2026-07-15','ACTIVA',2),(3,3,3,1,'2026-07-16','ACTIVA',3),(5,5,1,1,'2026-10-16','ACTIVA',8),(6,206,1,2,'2026-10-29','ACTIVA',8);
 /*!40000 ALTER TABLE `matriculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -758,7 +853,7 @@ CREATE TABLE `ofertas` (
   CONSTRAINT `ofertas_ibfk_1` FOREIGN KEY (`materia_id`, `carrera_id`) REFERENCES `materias` (`id`, `carrera_id`),
   CONSTRAINT `ofertas_ibfk_2` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`id`),
   CONSTRAINT `ofertas_ibfk_3` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -853,7 +948,7 @@ CREATE TABLE `periodos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`fecha_fin` >= `fecha_inicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -862,7 +957,7 @@ CREATE TABLE `periodos` (
 
 LOCK TABLES `periodos` WRITE;
 /*!40000 ALTER TABLE `periodos` DISABLE KEYS */;
-INSERT INTO `periodos` VALUES (1,'DEMO-2026','2026-07-20','2026-12-04');
+INSERT INTO `periodos` VALUES (1,'DEMO-2026','2026-07-20','2026-12-04'),(2,'20-27','2020-01-01','2027-09-11');
 /*!40000 ALTER TABLE `periodos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1436,4 +1531,4 @@ USE `itsc_academico_v3`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-29 20:48:29
+-- Dump completed on 2026-10-29 21:22:08

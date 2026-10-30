@@ -9,7 +9,7 @@ Estudiante: Vicente Apaza Bautista. Docente: Ing. Lozano Barro Jorge Robbert.
 - [Práctico](Practico_ITSC.docx).
 - [Diagrama HTML](Diagrama_de_Clases_ITSC.html): descargar y abrir en Chrome.
 
-La base contiene **1.000 estudiantes, 80 docentes y 12 carreras**, con datos ficticios. Cuatro carreras están marcadas como demostración. Incluye 37 tablas y tres vistas.
+La base contiene **1.000 estudiantes, 80 docentes y 12 carreras**, con datos ficticios. Cuatro carreras están marcadas como demostración. Incluye 40 tablas y tres vistas.
 
 ## Instalación
 
@@ -25,3 +25,12 @@ El ZIP incluye las instrucciones completas, las capturas y el diagrama editable.
 Esta entrega usa PHP y MariaDB. La migración a NestJS, Next.js y PostgreSQL todavía no está implementada. El práctico conserva el enlace al repositorio original.
 
 Proyecto de práctica; no es un sistema oficial del instituto.
+
+## Organización institucional y grupos versión 1.4
+
+La entrega ahora incluye grupos por gestión, carrera, curso, paralelo y turno; asignación de matrículas y ofertas de materias; tutor, cupo y estado. El menú separa organización, evaluación, caja y administración. Incluye búsqueda en todos los registros y páginas de 50 filas.
+
+- [Guía para crear y gestionar grupos](GUIA_GRUPOS_ITSC.md).
+- [Resultado de las 62 verificaciones locales](PRUEBAS_GRUPOS_ITSC.txt).
+
+El práctico y diagrama anteriores corresponden a la entrega inicial; las tablas y funciones nuevas se documentan en la guía. Se conserva el alcance PHP y MariaDB para XAMPP.
