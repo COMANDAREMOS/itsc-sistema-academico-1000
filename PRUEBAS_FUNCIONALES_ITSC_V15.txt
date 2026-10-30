@@ -1,0 +1,176 @@
+ITSC versión 1.5
+168 comprobaciones HTTP y de resultados correctas.
+Los datos temporales se retiraron y los accesos de prueba se desactivaron.
+
+OK: Acceso administrativo conservado
+OK: Pantalla inicial de inscripción por grupo
+OK: Fixtures separados de los cuatro grupos de ejemplo
+OK: Plan de la carrera y selección múltiple disponibles
+OK: Segunda página de estudiantes accesible
+OK: Búsqueda filtra por registro de estudiante
+OK: Lote sin materias crea dos matrículas y dos integrantes
+OK: Repetición sin materias es idempotente
+OK: Cupo de grupo cancela todo el lote
+OK: Se impide asignar un estudiante a otro grupo de la misma gestión
+OK: Plan de otra carrera rechazado
+OK: Se exige vincular materias cuando se solicita inscripción
+OK: Lote inscribe a dos integrantes en las materias del grupo
+OK: Repetición con materias no duplica inscripciones
+OK: Cupo de oferta insuficiente cancela matrícula e integrante nuevos
+OK: Oferta cerrada rechaza nuevas inscripciones sin cambios parciales
+OK: Repetición de inscripciones existentes en oferta cerrada conserva datos
+OK: Prerrequisito pendiente cancela lote completo
+OK: No modifica el plan de una matrícula existente
+OK: POST sin CSRF rechazado
+OK: Selección vacía rechazada
+OK: Límite de 100 selecciones validado en servidor
+OK: Identificadores repetidos se procesan una sola vez
+OK: Docente sin permiso de acceso a inscripción grupal
+OK: POST docente no crea matrículas ni integrantes
+RESULTADO: 25 verificaciones correctas.
+LIMPIEZA: retirados los períodos, grupos, ofertas, matrículas, plan y acceso temporales; se conservan los grupos de ejemplo 10 a 13.
+OK: Autenticación administrativa
+OK: Pantalla de horarios disponible
+OK: Creación de horario persistida
+OK: Cruce de grupo rechazado
+OK: Cruce de docente rechazado
+OK: Cruce de aula rechazado
+OK: Cruce de la misma oferta rechazado
+OK: Docente entre períodos superpuestos rechazado
+OK: Aula entre períodos superpuestos rechazada
+OK: Extremos contiguos admitidos
+OK: Mismos recursos en períodos no superpuestos admitidos
+OK: Capacidad del aula obligatoria
+OK: Día inválido rechazado
+OK: Hora inválida rechazada
+OK: Final anterior al inicio rechazado
+OK: Gestión con horarios no cambia fechas
+OK: Edición de horario persistida
+OK: Filtro por gestión y grupo funcional
+OK: Retiro de horario sin eliminar oferta
+OK: Vincular oferta que cruza horario de grupo se rechaza
+OK: Grupo cerrado bloquea programación
+OK: Grupo cerrado bloquea retiro de horario
+OK: Oferta cerrada bloquea programación
+OK: Oferta cerrada bloquea retiro
+OK: CSRF inválido rechazado
+OK: Docente consulta horarios propios
+OK: Docente no ve horarios de otro docente
+OK: Grupo ajeno al docente no expone horarios
+OK: Docente no modifica horarios
+TOTAL: 29 verificaciones correctas.
+Fixtures con prefijo QAH2FAD50 retirados; usuario propio de prueba desactivado.
+OK: Anónimo sin descarga pdf
+OK: Anónimo sin descarga xlsx
+OK: Inicio de sesión admin
+OK: Pantalla reportes ADMIN
+OK: Tres reportes ADMIN
+OK: Descarga admin integrantes pdf
+OK: Adjunto con extensión correcta admin integrantes pdf
+OK: Firma PDF admin integrantes
+OK: PDF institucional legible admin integrantes
+OK: Descarga admin integrantes xlsx
+OK: Adjunto con extensión correcta admin integrantes xlsx
+OK: Firma ZIP Excel admin integrantes
+OK: XLSX válido con encabezados admin integrantes
+OK: Descarga sin avisos PHP admin integrantes
+OK: Descarga admin boletin pdf
+OK: Adjunto con extensión correcta admin boletin pdf
+OK: Firma PDF admin boletin
+OK: PDF institucional legible admin boletin
+OK: Descarga admin boletin xlsx
+OK: Adjunto con extensión correcta admin boletin xlsx
+OK: Firma ZIP Excel admin boletin
+OK: XLSX válido con encabezados admin boletin
+OK: Descarga sin avisos PHP admin boletin
+OK: Descarga admin saldos pdf
+OK: Adjunto con extensión correcta admin saldos pdf
+OK: Firma PDF admin saldos
+OK: PDF institucional legible admin saldos
+OK: Descarga admin saldos xlsx
+OK: Adjunto con extensión correcta admin saldos xlsx
+OK: Firma ZIP Excel admin saldos
+OK: XLSX válido con encabezados admin saldos
+OK: Descarga sin avisos PHP admin saldos
+OK: Filtro/formato inválido rechazado: tipo=boletin&formato=csv
+OK: Filtro/formato inválido rechazado: tipo=boletin&formato=xlsx&gestion[]=1
+OK: Filtro/formato inválido rechazado: tipo=boletin&formato=pdf&grupo=999999
+OK: Inicio de sesión qa_reportes_docente_a03e7cea
+OK: Pantalla reportes DOCENTE
+OK: DOCENTE sin selector de finanzas
+OK: DOCENTE sin exportación financiera
+OK: Descarga docente integrantes pdf
+OK: Adjunto con extensión correcta docente integrantes pdf
+OK: Firma PDF docente integrantes
+OK: PDF institucional legible docente integrantes
+OK: Descarga docente integrantes xlsx
+OK: Adjunto con extensión correcta docente integrantes xlsx
+OK: Firma ZIP Excel docente integrantes
+OK: XLSX válido con encabezados docente integrantes
+OK: Descarga sin avisos PHP docente integrantes
+OK: Descarga docente boletin pdf
+OK: Adjunto con extensión correcta docente boletin pdf
+OK: Firma PDF docente boletin
+OK: PDF institucional legible docente boletin
+OK: Descarga docente boletin xlsx
+OK: Adjunto con extensión correcta docente boletin xlsx
+OK: Firma ZIP Excel docente boletin
+OK: XLSX válido con encabezados docente boletin
+OK: Descarga sin avisos PHP docente boletin
+OK: Boletín DOCENTE solo de propias ofertas
+OK: Inicio de sesión qa_reportes_caja_a03e7cea
+OK: Pantalla reportes CAJA
+OK: CAJA solo selector de saldos
+OK: CAJA no exporta boletin
+OK: CAJA no exporta integrantes
+OK: Descarga caja saldos pdf
+OK: Adjunto con extensión correcta caja saldos pdf
+OK: Firma PDF caja saldos
+OK: PDF institucional legible caja saldos
+OK: Descarga caja saldos xlsx
+OK: Adjunto con extensión correcta caja saldos xlsx
+OK: Firma ZIP Excel caja saldos
+OK: XLSX válido con encabezados caja saldos
+OK: Descarga sin avisos PHP caja saldos
+OK: Acceso temporal 7 desactivado
+OK: Acceso temporal 8 desactivado
+OK: Pantalla inicio
+OK: Pantalla inscripcion_grupal
+OK: Pantalla horarios
+OK: Pantalla notas_grupo
+OK: Pantalla asistencia_grupo
+OK: Pantalla reportes
+OK: Inscripción masiva prepara planillas
+OK: Lista de notas de dos estudiantes
+OK: Notas guardadas en lote
+OK: Vacío conserva nota y otra se actualiza
+OK: Nota inválida cancela toda la planilla
+OK: Inscripción ajena a la oferta rechazada
+OK: Evaluación ajena rechazada
+OK: CSRF obligatorio en planilla
+OK: Lista de asistencia de dos estudiantes
+OK: Asistencia fuera de duración cancela lote
+OK: Ausencia cero y blanco conserva
+OK: Docente abre su planilla
+OK: Docente no abre materia ajena
+OK: Docente no guarda en materia ajena
+OK: Cálculo de resultado 9
+OK: Cálculo de resultado 11
+OK: Oferta cerrada bloquea planilla
+OK: Panel gestión Estudiantes matriculados
+OK: Panel gestión Grupos
+OK: Panel gestión Ofertas de materias
+OK: Panel gestión Materias aprobadas
+OK: Panel caja de la gestión
+OK: Panel separa gestiones
+OK: Panel docente no expone cobros
+OK: Pantalla inicio
+OK: Pantalla inscripcion_grupal
+OK: Pantalla horarios
+OK: Pantalla notas_grupo
+OK: Pantalla asistencia_grupo
+OK: Pantalla reportes
+OK: Paralelo largo rechazado en grupos
+OK: Paralelo largo rechazado en ofertas
+OK: Cuatro grupos de ejemplo conservados
+OK: Mil estudiantes conservados

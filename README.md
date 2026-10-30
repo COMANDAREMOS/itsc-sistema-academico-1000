@@ -34,3 +34,15 @@ La entrega ahora incluye grupos por gestión, carrera, curso, paralelo y turno; 
 - [Resultado de las 62 verificaciones locales](PRUEBAS_GRUPOS_ITSC.txt).
 
 El práctico y diagrama anteriores corresponden a la entrega inicial; las tablas y funciones nuevas se documentan en la guía. Se conserva el alcance PHP y MariaDB para XAMPP.
+
+## Operación por grupos versión 1.5
+
+- Inscripción de varios estudiantes a un grupo, con matrícula e inscripción opcional a materias y sin duplicados.
+- Horarios con controles de cruces de grupo, docente y aula.
+- Planillas de notas y asistencia por grupo y materia.
+- Reportes descargables PDF y Excel XLSX con permisos por rol.
+- Panel institucional filtrado por gestión.
+
+[Guía de uso de la versión 1.5](GUIA_OPERACION_ITSC_V15.md) · [168 comprobaciones locales correctas](PRUEBAS_FUNCIONALES_ITSC_V15.txt).
+
+La actualización está incluida en el ZIP y el SQL completo. Se conservaron los cuatro grupos de ejemplo y los 1.000 estudiantes. Los estudiantes se asignan mediante selección explícita, no automáticamente. El práctico y UML iniciales se complementan con esta guía.

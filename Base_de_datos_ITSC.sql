@@ -40,7 +40,7 @@ CREATE TABLE `app_auditoria` (
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`),
   CONSTRAINT `app_auditoria_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `app_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=279 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `app_usuarios` (
   KEY `docente_id` (`docente_id`),
   CONSTRAINT `app_usuarios_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`rol` <> 'DOCENTE' or `docente_id` is not null)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +280,7 @@ CREATE TABLE `cargos` (
   KEY `matricula_id` (`matricula_id`),
   CONSTRAINT `cargos_ibfk_1` FOREIGN KEY (`matricula_id`) REFERENCES `matriculas` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`monto` > 0)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +498,7 @@ CREATE TABLE `evaluaciones` (
   UNIQUE KEY `oferta_id` (`oferta_id`,`nombre`),
   UNIQUE KEY `id` (`id`,`oferta_id`),
   CONSTRAINT `evaluaciones_ibfk_1` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -556,7 +556,7 @@ CREATE TABLE `grupo_integrantes` (
   KEY `grupo_id` (`grupo_id`),
   CONSTRAINT `grupo_integrantes_ibfk_1` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`),
   CONSTRAINT `grupo_integrantes_ibfk_2` FOREIGN KEY (`matricula_id`) REFERENCES `matriculas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -584,7 +584,7 @@ CREATE TABLE `grupo_materias` (
   KEY `grupo_id` (`grupo_id`),
   CONSTRAINT `grupo_materias_ibfk_1` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`id`),
   CONSTRAINT `grupo_materias_ibfk_2` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -622,7 +622,7 @@ CREATE TABLE `grupos` (
   CONSTRAINT `grupos_ibfk_3` FOREIGN KEY (`tutor_id`) REFERENCES `docentes` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`curso` between 1 and 6),
   CONSTRAINT `CONSTRAINT_2` CHECK (`cupo` between 1 and 1000)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -631,6 +631,7 @@ CREATE TABLE `grupos` (
 
 LOCK TABLES `grupos` WRITE;
 /*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
+INSERT INTO `grupos` VALUES (10,1,1,1,'A','MAÑANA',30,1,'ACTIVO'),(11,1,2,1,'A','NOCHE',30,2,'ACTIVO'),(12,3,1,1,'A','MAÑANA',30,1,'ACTIVO'),(13,3,3,1,'B','TARDE',25,3,'ACTIVO');
 /*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -655,7 +656,7 @@ CREATE TABLE `horarios` (
   CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`aula_id`) REFERENCES `aulas` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`dia` between 1 and 7),
   CONSTRAINT `CONSTRAINT_2` CHECK (`hora_fin` > `hora_inicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -690,7 +691,7 @@ CREATE TABLE `inscripciones` (
   KEY `oferta_id` (`oferta_id`,`carrera_id`,`periodo_id`),
   CONSTRAINT `inscripciones_ibfk_1` FOREIGN KEY (`matricula_id`, `carrera_id`, `periodo_id`) REFERENCES `matriculas` (`id`, `carrera_id`, `periodo_id`),
   CONSTRAINT `inscripciones_ibfk_2` FOREIGN KEY (`oferta_id`, `carrera_id`, `periodo_id`) REFERENCES `ofertas` (`id`, `carrera_id`, `periodo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -760,7 +761,7 @@ CREATE TABLE `matriculas` (
   CONSTRAINT `matriculas_ibfk_2` FOREIGN KEY (`carrera_id`) REFERENCES `carreras` (`id`),
   CONSTRAINT `matriculas_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`id`),
   CONSTRAINT `matriculas_ibfk_4` FOREIGN KEY (`plan_id`, `carrera_id`) REFERENCES `planes_estudio` (`id`, `carrera_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -853,7 +854,7 @@ CREATE TABLE `ofertas` (
   CONSTRAINT `ofertas_ibfk_1` FOREIGN KEY (`materia_id`, `carrera_id`) REFERENCES `materias` (`id`, `carrera_id`),
   CONSTRAINT `ofertas_ibfk_2` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`id`),
   CONSTRAINT `ofertas_ibfk_3` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -885,7 +886,7 @@ CREATE TABLE `pagos` (
   KEY `cargo_id` (`cargo_id`),
   CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`monto` > 0)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -948,7 +949,7 @@ CREATE TABLE `periodos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`fecha_fin` >= `fecha_inicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -957,7 +958,7 @@ CREATE TABLE `periodos` (
 
 LOCK TABLES `periodos` WRITE;
 /*!40000 ALTER TABLE `periodos` DISABLE KEYS */;
-INSERT INTO `periodos` VALUES (1,'DEMO-2026','2026-07-20','2026-12-04'),(2,'20-27','2020-01-01','2027-09-11');
+INSERT INTO `periodos` VALUES (1,'DEMO-2026','2026-07-20','2026-12-04'),(2,'20-27','2020-01-01','2027-09-11'),(3,'DEMO-2027','2027-02-01','2027-11-30');
 /*!40000 ALTER TABLE `periodos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1009,7 +1010,7 @@ CREATE TABLE `planes_estudio` (
   KEY `regla_id` (`regla_id`),
   CONSTRAINT `planes_estudio_ibfk_1` FOREIGN KEY (`carrera_id`) REFERENCES `carreras` (`id`),
   CONSTRAINT `planes_estudio_ibfk_2` FOREIGN KEY (`regla_id`) REFERENCES `reglas_evaluacion` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1257,7 +1258,7 @@ CREATE TABLE `sesiones` (
   UNIQUE KEY `oferta_id` (`oferta_id`,`inicio`),
   CONSTRAINT `sesiones_ibfk_1` FOREIGN KEY (`oferta_id`) REFERENCES `ofertas` (`id`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`fin` > `inicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1531,4 +1532,4 @@ USE `itsc_academico_v3`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-29 21:22:08
+-- Dump completed on 2026-10-29 23:43:13
